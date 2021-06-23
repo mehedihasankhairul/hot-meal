@@ -7,13 +7,13 @@ import Product from './Product';
 const Products = () => {
 
 
-    const [products, setProducts] = useState([]);
+    const [data, setData] = useState([]);
     useEffect(() => {
         fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken`)
             .then(res => res.json())
-            .then(products => {
-                console.log(products);
-                setProducts(products);
+            .then(data => {
+               
+                setData(data.meals);
                 
             })
     }, []);
@@ -25,35 +25,10 @@ const Products = () => {
             <div className="grid grid-cols-4  my-8 gap-24">
                 
           
-               
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+               {
+                   data.map(data => <Product key={data.idMeal} meals={data}/>)
+               }
+
                 
             </div>
 
